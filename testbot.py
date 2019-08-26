@@ -87,7 +87,7 @@ def get_recipe_source():
     recipeSource = source
     for i in recipeSource:
         print((i[0]))
-    recipe_input = input("Enter your choice \n ")
+    recipe_input = input("\n Enter your choice from above menu \n ")
     for s in range(0, len(recipeSource)):
         if recipe_input.lower() == recipeSource[s][0].lower():
             source = recipeSource[s][1]
@@ -138,7 +138,6 @@ def get_recipe(source_url):
         for j in i:
             method.append(str(x) + " . " + j.text)
             x = x + 1
-    # print(method)
     for i in soup.find_all(
         "li",
         {"class": "ingredients-list__item", "itemprop": "ingredients"}
@@ -148,13 +147,25 @@ def get_recipe(source_url):
                 j.decompose()
             else:
                 pass
-        # print(i.text)
         ingredient.append(i.text)
     return serves, nutrition, ingredient, method
 
 
 serves, nutrition, ingredient, method = get_recipe(source_url)
+print("Output is in log file - (for testing) \n")
+logging.info("No. of Rating : \n")
+logging.info(rating)
+logging.info("Skill Level : \n")
+logging.info(skill)
+logging.info("Total Time to Cook \n")
+logging.info(total_time)
+logging.info("Serving : \n")
 logging.info(serves)
+logging.info("Nutritions from Food : \n")
 logging.info(nutrition)
-logging.info(ingredient)
-logging.info(method)
+logging.info("Ingrediants for Recipe :  \n")
+for i in ingredient:
+    logging.info(i)
+logging.info("Cooking Method :  \n")
+for i in method:
+    logging.info(i+'\n')
