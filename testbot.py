@@ -154,7 +154,7 @@ def get_recipe(source_url):
 
 
 serves, nutrition, ingredient, method = get_recipe(source_url)
-print(serves)
-print(nutrition)
-print(ingredient)
-print(method)
+logging.info(serves)
+logging.info(nutrition)
+logging.info(ingredient)
+logging.info(method)
